@@ -24,6 +24,11 @@ $css = Load::loadTEXT($src);
 
 $fd = Load::srcinfo($src);
 $folder = $fd['folder'];
+$r = explode('/', $folder);
+array_pop($r);
+array_pop($r);
+$folder = implode('/', $r).'/';
+
 $css = str_replace('../', '/'.$folder, $css);
 
 
