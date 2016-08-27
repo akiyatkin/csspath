@@ -29,8 +29,8 @@ $r = explode('/', $folder);
 
 array_pop($r);
 array_pop($r);
-$folder = implode('/', $r).'/';
-
+$folder = implode('/', $r);
+if ($folder) $folder=$folder.'/';
 
 $css = str_replace('../', '/'.$folder, $css);
 
