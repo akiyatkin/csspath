@@ -9,7 +9,7 @@ if (!is_file('vendor/autoload.php')) {
 	require_once('vendor/autoload.php');
 	Router::init();
 }
-
+$ans = array(); 
 $src = Ans::GET('src','string');
 
 if (!$src) return Ans::err($ans, 'Требуется параметр src');
@@ -29,10 +29,14 @@ $r = explode('/', $folder);
 
 array_pop($r);
 array_pop($r);
-$folder = implode('/', $r);
-if ($folder) $folder=$folder.'/';
+$foldertop = implode('/', $r);
+if ($foldertop) $foldertop=$foldertop.'/';
 
-$css = str_replace('../', '/'.$folder, $css);
+//bootstrap
+$css = str_replace('../', '/'.$foldertop, $css);
+
+//У flexslider путь такой - src: url('fonts/flexslider-icon.eot');
+$css = str_replace('url(\'fonts/', 'url(\'/'.$folder.'fonts/', $css);
 
 
 return Ans::css($css);
