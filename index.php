@@ -38,5 +38,7 @@ $css = str_replace('../', '/'.$foldertop, $css);
 //У flexslider путь такой - src: url('fonts/flexslider-icon.eot');
 $css = str_replace('url(\'fonts/', 'url(\'/'.$folder.'fonts/', $css);
 
+$css = str_replace('url(\'./', 'url(\'/'.$folder, $css);
+
 
 return Ans::css($css);
